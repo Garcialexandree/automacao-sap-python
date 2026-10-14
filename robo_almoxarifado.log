@@ -1,0 +1,21 @@
+04/10/2026 23:25:09 | INFO | ROBÔ ATIVO. Ctrl+C para desligar. Log em robo_almoxarifado.log
+04/10/2026 23:25:11 | INFO | Base de materiais carregada: 2522 itens
+04/10/2026 23:25:11 | INFO | Conectando ao SAP...
+04/10/2026 23:25:11 | INFO | SAP OK
+04/10/2026 23:25:11 | INFO | Conectando ao Google Sheets...
+04/10/2026 23:25:13 | INFO | Google Sheets OK
+05/10/2026 00:01:50 | INFO | Robô desligado pelo usuário.
+05/10/2026 00:02:04 | INFO | ROBÔ ATIVO. Ctrl+C para desligar. Log em robo_almoxarifado.log
+05/10/2026 00:02:06 | INFO | Base de materiais carregada: 2522 itens
+05/10/2026 00:02:06 | INFO | Conectando ao SAP...
+05/10/2026 00:02:09 | INFO | SAP OK
+05/10/2026 00:02:09 | INFO | Conectando ao Google Sheets...
+05/10/2026 00:02:11 | INFO | Google Sheets OK
+05/10/2026 04:04:59 | INFO | Robô desligado pelo usuário.
+05/10/2026 23:18:25 | INFO | ROBÔ ATIVO. Ctrl+C para desligar. Log em robo_almoxarifado.log
+05/10/2026 23:18:26 | INFO | Base de materiais carregada: 2522 itens
+05/10/2026 23:18:26 | INFO | Conectando ao SAP...
+05/10/2026 23:18:29 | INFO | SAP OK
+05/10/2026 23:18:29 | INFO | Conectando ao Google Sheets...
+05/10/2026 23:18:31 | INFO | Google Sheets OK
+05/10/2026 23:49:00 | INFO | Robô desligado pelo usuário.
