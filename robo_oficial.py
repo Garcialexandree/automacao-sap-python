@@ -258,16 +258,17 @@ try:
                             continue
                         
                         planilha_requisicoes.update_cell(indice, 7, desc_sap_texto.strip()) 
-                        planilha_requisicoes.update_cell(indice, 10, "LANÇADO")             
+                        planilha_requisicoes.update_cell(indice, 10, "LANÇADO")            
                         atualizar_historico_json(numero_ordem, codigo_sap, desc_sap_texto.strip(), quantidade, unidade_final, "Baixado", nome_funcionario)
                         print(f"✅ Peça {codigo_sap} processada com sucesso!\n")
-# -------------------------------------------------------------
+            
+            # -------------------------------------------------------------
             # PARTE 2: PROCESSAR INVENTÁRIO (ZWM063) - MODO SIMPLIFICADO
             # -------------------------------------------------------------
             print("\nA verificar aba Inventário...")
             linhas_inv = planilha_inventario.get_all_values()
             
-            iniciou_tabela = False # O nosso "interruptor"
+            iniciou_tabela = False 
             
             for indice_inv, linha_inv in enumerate(linhas_inv[1:], start=2):
                 while len(linha_inv) < 3: linha_inv.append("")
@@ -283,8 +284,8 @@ try:
                 # Se ainda não chegou à tabela, procura a palavra "Material"
                 if not iniciou_tabela:
                     if material_inv.upper() == "MATERIAL":
-                        iniciou_tabela = True # Encontrou! Liga o interruptor.
-                    continue # Salta para a próxima linha sem processar o cabeçalho
+                        iniciou_tabela = True 
+                    continue 
                 
                 # DAQUI PARA BAIXO, ELE SÓ LÊ OS MATERIAIS REAIS
                 if qtd_fisica != "" and status_inv == "":
@@ -298,6 +299,29 @@ try:
                         session.findById("wnd[0]/usr/btnOPCAO4").press()
                         session.findById("wnd[0]/usr/btnOPCAO1").press()
                     except: pass
+
+                    time.sleep(1) # Dá 1 segundo para a janelinha amarela aparecer
+                    
+                    # --- NOVO: BLOCO PARA FECHAR A JANELINHA DO "B03" ÀS CEGAS ---
+                    try:
+                        inseriu_b03 = False
+                        for id_campo in ["ctxt[0]", "ctxt[1]", "ctxt[2]", "txt[0]", "txt[1]"]:
+                            try:
+                                session.findById(f"wnd[1]/usr/{id_campo}").text = "B03"
+                                inseriu_b03 = True
+                                break 
+                            except:
+                                pass
+                        
+                        try:
+                            session.findById("wnd[1]/tbar[0]/btn[0]").press() 
+                        except:
+                            session.findById("wnd[1]").sendVKey(0) 
+                            
+                        time.sleep(1) 
+                    except:
+                        pass 
+                    # -------------------------------------------------------------
 
                     # PASSO A: Busca do Material
                     mat_procurado = material_inv.lstrip('0') 
